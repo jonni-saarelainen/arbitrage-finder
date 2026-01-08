@@ -14,16 +14,17 @@ export const getArbitrageOpportunities = async (req, res) => {
 		const sports = await fetchSports(apiKey);
 		const oddsData = [];
 
-		for (const sport of sports) {
+		for (let i = 0; i < sports.length; i++) {
+			const sport = sports[i];
 			const odds = await fetchOdds(sport.key, apiKey);
 
-			odds.forEach((odd) => {
-				odd.sport_group = sport.group;
-			});
+			const withGroup = odds.map((odd) => ({
+				...odd,
+				sport_group: sport.group,
+			}));
 
-			oddsData.push(...odds);
-
-			await rateLimit(sports.indexOf(sport));
+			oddsData.push(...withGroup);
+			await rateLimit(i);
 		}
 
 		const matches = oddsData.flat();

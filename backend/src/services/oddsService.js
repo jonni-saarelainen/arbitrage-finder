@@ -27,37 +27,29 @@ const allowedBookmakers = [
 const filterBookmakers = (odds) => {
 	return odds.map((match) => ({
 		...match,
-		bookmakers: match.bookmakers.filter((bookmaker) => {
-			return allowedBookmakers.includes(bookmaker.key);
-		}),
+		bookmakers: Array.isArray(match.bookmakers) ? match.bookmakers.filter((b) => allowedBookmakers.includes(b.key)) : [],
 	}));
 };
 
 export const fetchSports = async (apiKey) => {
 	try {
-		const response = await axios.get("https://api.the-odds-api.com/v4/sports", {
+		const { data } = await axios.get("https://api.the-odds-api.com/v4/sports", {
 			params: {
 				apiKey,
 				outrights: "false",
 			},
 		});
 
-		const sports = response.data;
-
-		return sports;
+		return data;
 	} catch (error) {
-		if (error.response) {
-			console.log("Error status", error.response.status);
-			console.log(error.response.data);
-		} else {
-			console.log("Error", error.message);
-		}
+		console.error("Failed to fetch sports:", error.message);
+		throw error;
 	}
 };
 
 export const fetchOdds = async (sportKey, apiKey) => {
 	try {
-		const response = await axios.get(`https://api.the-odds-api.com/v4/sports/${sportKey}/odds`, {
+		const { data } = await axios.get(`https://api.the-odds-api.com/v4/sports/${sportKey}/odds`, {
 			params: {
 				apiKey,
 				regions: "eu",
@@ -69,17 +61,9 @@ export const fetchOdds = async (sportKey, apiKey) => {
 			},
 		});
 
-		const odds = filterBookmakers(response.data);
-
-		return odds;
+		return filterBookmakers(data);
 	} catch (error) {
-		if (error.response) {
-			console.log("Error status", error.response.status);
-			console.log(error.response.data);
-		} else {
-			console.log("Error", error.message);
-		}
+		console.error(`Failed to fetch odds for ${sportKey}:`, error.message);
+		throw error;
 	}
 };
-
-export const fetchOddsData = async () => {};
