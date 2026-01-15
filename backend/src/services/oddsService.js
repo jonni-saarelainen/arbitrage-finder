@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const apiKey = process.env.ODDS_API_KEY;
+
 const allowedBookmakers = [
 	"onexbet",
 	"sport888",
@@ -31,7 +33,7 @@ const filterBookmakers = (odds) => {
 	}));
 };
 
-export const fetchSports = async (apiKey) => {
+export const fetchSports = async () => {
 	try {
 		const { data } = await axios.get("https://api.the-odds-api.com/v4/sports", {
 			params: {
@@ -47,7 +49,7 @@ export const fetchSports = async (apiKey) => {
 	}
 };
 
-export const fetchOdds = async (sportKey, apiKey) => {
+export const fetchOdds = async (sportKey) => {
 	try {
 		const { data } = await axios.get(`https://api.the-odds-api.com/v4/sports/${sportKey}/odds`, {
 			params: {

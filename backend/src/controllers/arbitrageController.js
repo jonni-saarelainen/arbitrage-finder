@@ -5,18 +5,12 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const getArbitrageOpportunities = async (req, res) => {
 	try {
-		const apiKey = req.query.apiKey;
-
-		if (!apiKey) {
-			return res.status(400).json({ error: "API key is required" });
-		}
-
-		const sports = await fetchSports(apiKey);
+		const sports = await fetchSports();
 		const oddsData = [];
 
 		for (let i = 0; i < sports.length; i++) {
 			const sport = sports[i];
-			const odds = await fetchOdds(sport.key, apiKey);
+			const odds = await fetchOdds(sport.key);
 
 			const withGroup = odds.map((odd) => ({
 				...odd,
