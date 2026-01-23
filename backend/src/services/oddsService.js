@@ -2,6 +2,7 @@ import axios from "axios";
 
 const apiKey = process.env.ODDS_API_KEY;
 
+// These are the bookmakers that were working in Finland at the time of implementation
 const allowedBookmakers = [
 	"onexbet",
 	"sport888",
