@@ -4,7 +4,8 @@ npm-debug.log*
 
 # Env files
 .env
-.env.*
+.env*
+!.env.example
 
 # Build output
 dist/
