@@ -1,7 +1,5 @@
 import axios from "axios";
 
-const apiKey = process.env.ODDS_API_KEY;
-
 // These are the bookmakers that were working in Finland at the time of implementation
 const allowedBookmakers = [
 	"onexbet",
@@ -35,6 +33,7 @@ const filterBookmakers = (odds) => {
 };
 
 export const fetchSports = async () => {
+	const apiKey = process.env.ODDS_API_KEY;
 	try {
 		const { data } = await axios.get("https://api.the-odds-api.com/v4/sports", {
 			params: {
@@ -51,6 +50,7 @@ export const fetchSports = async () => {
 };
 
 export const fetchOdds = async (sportKey) => {
+	const apiKey = process.env.ODDS_API_KEY;
 	try {
 		const { data } = await axios.get(`https://api.the-odds-api.com/v4/sports/${sportKey}/odds`, {
 			params: {
@@ -60,7 +60,6 @@ export const fetchOdds = async (sportKey) => {
 				oddsFormat: "decimal",
 				dateFormat: "iso",
 				includeLinks: "true",
-				includeSids: "true",
 			},
 		});
 

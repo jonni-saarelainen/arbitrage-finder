@@ -10,6 +10,12 @@ export const getArbitrageOpportunities = async (req, res) => {
 
 		for (let i = 0; i < sports.length; i++) {
 			const sport = sports[i];
+
+			// Rate limiting
+			if (i > 0) {
+				await delay(250);
+			}
+
 			const odds = await fetchOdds(sport.key);
 
 			const withGroup = odds.map((odd) => ({
@@ -18,7 +24,6 @@ export const getArbitrageOpportunities = async (req, res) => {
 			}));
 
 			oddsData.push(...withGroup);
-			await rateLimit(i);
 		}
 
 		const matches = oddsData.flat();
@@ -31,9 +36,3 @@ export const getArbitrageOpportunities = async (req, res) => {
 		res.status(500).json({ error: "Internal server error" });
 	}
 };
-
-async function rateLimit(index) {
-	if ((index + 1) % 30 === 0) {
-		await delay(1000);
-	}
-}
