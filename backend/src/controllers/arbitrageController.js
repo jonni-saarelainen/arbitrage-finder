@@ -30,7 +30,9 @@ export const getArbitrageOpportunities = async (req, res) => {
 
 		const arbitrageOpportunities = findArbitrageOpportunities(matches);
 
-		res.json(arbitrageOpportunities);
+		const filteredOpportunities = arbitrageOpportunities.filter((opportunity) => opportunity.roi >= 1);
+
+		res.json(filteredOpportunities);
 	} catch (error) {
 		console.error("Error fetching arbitrage opportunities:", error);
 		res.status(500).json({ error: "Internal server error" });

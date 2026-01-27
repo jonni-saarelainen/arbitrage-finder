@@ -1,10 +1,13 @@
 import styles from "./ArbitrageCard.module.css";
 import { bookmakerLogos } from "../constants/bookmakerLogos";
+import { useState } from "react";
 
 const ArbitrageCard = (props) => {
 	const { arbitrageOpportunity, wager } = props;
 	const { roi, sport, league, event, eventStartTime, bestOdds } = arbitrageOpportunity;
 	const profit = roi * (wager / 100);
+	const [showCopyNotification, setShowCopyNotification] = useState(false);
+	const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
 	const formattedProfit = profit.toLocaleString("de-DE", {
 		minimumFractionDigits: 2,
@@ -14,6 +17,17 @@ const ArbitrageCard = (props) => {
 	const formattedStartTime = formatEventDate(eventStartTime);
 
 	const formattedEvent = formatEvent(event);
+
+	const handleCopyEvent = async (e) => {
+		try {
+			setMousePos({ x: e.clientX, y: e.clientY });
+			await navigator.clipboard.writeText(formattedEvent);
+			setShowCopyNotification(true);
+			setTimeout(() => setShowCopyNotification(false), 1000);
+		} catch (err) {
+			console.error("Failed to copy:", err);
+		}
+	};
 
 	return (
 		<div className={styles.card}>
@@ -29,7 +43,9 @@ const ArbitrageCard = (props) => {
 				<p>
 					{sport} / {league}
 				</p>
-				<h3 className={styles.event}>{formattedEvent}</h3>
+				<h3 className={styles.event} onClick={handleCopyEvent} title="Copy to clipboard">
+					{formattedEvent}
+				</h3>
 				<p>{formattedStartTime}</p>
 			</div>
 			<div className={styles.bestOddsContainer}>
@@ -48,14 +64,19 @@ const ArbitrageCard = (props) => {
 								<p>Stake -</p>
 								<h4>{stake}€</h4>
 							</div>
-							<div className={styles.bookmakerLinkButton}>
+							<a href={bet.link} target="_blank" rel="noopener noreferrer" className={styles.bookmakerLinkButton}>
 								<img className={styles.bookmakerLogo} src={logoSrc}></img>
 								<h4>{formattedOdds}</h4>
-							</div>
+							</a>
 						</div>
 					);
 				})}
 			</div>
+			{showCopyNotification && (
+				<div className={styles.snackbar} style={{ top: `${mousePos.y - 60}px`, left: `${mousePos.x - 80}px` }}>
+					Copied to clipboard
+				</div>
+			)}
 		</div>
 	);
 };

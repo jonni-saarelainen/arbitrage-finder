@@ -1,18 +1,22 @@
 import styles from "./NavBar.module.css";
 
-const NavBar = () => {
+const NavBar = ({ lastRefresh }) => {
+	const formattedTime = lastRefresh ? lastRefresh.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }) : "N/A";
+
 	return (
 		<nav className={styles.navbar}>
-			<div className={styles.logoContainer}>
+			<a href="/" className={styles.logoContainer}>
 				<img src="../../public/logo.svg" alt="Logo" />
 				<h1>Arbie</h1>
-			</div>
+			</a>
 			<div className={styles.hContainer}>
-				<p>Last update: 00:00</p>
-				<a href="https://the-odds-api.com/" target="_blank" rel="noopener noreferrer">Odds Api</a>
+				<p>Last refresh: {formattedTime}</p>
+				<a href="https://the-odds-api.com/" target="_blank" rel="noopener noreferrer">
+					Odds Api
+				</a>
 			</div>
 		</nav>
-	)
+	);
 };
 
 export default NavBar;

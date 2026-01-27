@@ -1,12 +1,36 @@
 .card {
 	display: grid;
-	grid-template-columns: 25% 31% 44%;
+	grid-template-columns: 22% 34% 44%;
 	width: 1200px;
 	min-height: 196px;
 	background-color: var(--color-bg-light);
 	border-radius: 12px;
 	box-shadow: 2px 2px 7px 0px var(--color-shadow-default);
 	padding: 2.4rem 2.4rem 2.4rem 6.4rem;
+}
+
+.card p,
+h1,
+h2,
+h3,
+h4 {
+	user-select: none;
+}
+
+.event {
+	width: fit-content;
+	border-radius: 4px;
+	padding: 0.4rem 0.8rem;
+}
+
+.event:hover {
+	background-color: var(--color-shadow-default);
+	cursor: pointer;
+}
+
+.event:active {
+	transform: scale(0.96);
+	background-color: var(--color-border-light);
 }
 
 .vContainer {
@@ -47,6 +71,11 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	gap: 0.4rem;
+}
+
+.eventContainer p {
+	margin-left: 0.8rem;
 }
 
 .bestOddsContainer {
@@ -78,6 +107,13 @@
 	padding: 0.4rem;
 }
 
+.bookmakerLinkButton:hover {
+	transform: scale(1.02);
+	border-color: var(--color-border-dark);
+	box-shadow: 0px 0px 0px 0px var(--color-shadow-default);
+	cursor: pointer;
+}
+
 .bookmakerLinkButton h4 {
 	justify-self: center;
 	align-self: center;
@@ -86,4 +122,37 @@
 .bookmakerLogo {
 	height: 3.2rem;
 	border-radius: 4px;
+}
+
+.snackbar {
+	position: fixed;
+	background-color: var(--color-bg);
+	color: var(--color-text-primary);
+	padding: 0.6rem 1rem;
+	border-radius: 4px;
+	font-size: 1.2rem;
+	font-weight: 500;
+	white-space: nowrap;
+	animation: fadeInOut 1s ease-in-out;
+	z-index: 10;
+	pointer-events: none;
+}
+
+@keyframes fadeInOut {
+	0% {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+	10% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	90% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(4px);
+	}
 }

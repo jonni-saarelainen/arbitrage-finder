@@ -17,6 +17,7 @@
 
 .navbar p {
 	font-size: 1.4rem;
+	user-select: none;
 }
 
 .navbar a {
