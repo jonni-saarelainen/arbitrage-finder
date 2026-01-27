@@ -28,7 +28,16 @@ export const getArbitrageOpportunities = async (req, res) => {
 
 		const matches = oddsData.flat();
 
-		const arbitrageOpportunities = findArbitrageOpportunities(matches);
+		const now = new Date();
+		const bufferMinutes = 5;
+		const cutoffTime = new Date(now.getTime() + bufferMinutes * 60000);
+
+		const filteredMatches = matches.filter((match) => {
+			const commenceTime = new Date(match.commence_time);
+			return commenceTime > cutoffTime;
+		});
+
+		const arbitrageOpportunities = findArbitrageOpportunities(filteredMatches);
 
 		const filteredOpportunities = arbitrageOpportunities.filter((opportunity) => opportunity.roi >= 1);
 
