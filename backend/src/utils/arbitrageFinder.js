@@ -44,6 +44,7 @@ export const findArbitrageOpportunities = (matches) => {
 
 				if (!bestOdds[outcomeName] || odd > bestOdds[outcomeName].price) {
 					bestOdds[outcomeName] = {
+						bookmakerKey: bookmaker.key,
 						bookmaker: bookmaker.title,
 						price: odd,
 						link: link,
