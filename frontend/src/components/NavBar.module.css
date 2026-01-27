@@ -1,0 +1,37 @@
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: var(--color-bg-light);
+	position: sticky;
+	top: 0;
+	min-height: 7.2rem;
+	padding: 0.4rem 4.2rem;
+	box-shadow: 0px 2px 8px 0px var(--color-shadow-default);
+}
+
+.navbar h1 {
+	color: var(--color-logo);
+	font-weight: 700;
+}
+
+.navbar p {
+	font-size: 1.4rem;
+}
+
+.navbar a {
+	font-size: 1.4rem;
+}
+
+.logoContainer {
+	display: flex;
+	align-items: center;
+	gap: 1.2rem;
+}
+
+.hContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 24rem;
+}

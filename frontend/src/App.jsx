@@ -1,8 +1,14 @@
 import "./App.css";
+import NavBar from "./components/NavBar.jsx";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
-	return <Dashboard />;
+	return (
+		<>
+			<NavBar />
+			<Dashboard />
+		</>
+	);
 }
 
 export default App;

@@ -19,6 +19,7 @@ import unibet_nl from "../assets/bookmakers/UniBet.png";
 import unibet_se from "../assets/bookmakers/UniBet.png";
 import williamhill from "../assets/bookmakers/WilliamHill.png";
 import winamax_de from "../assets/bookmakers/Winamax.png";
+import fallback from "../assets/bookmakers/Fallback.png";
 
 export const bookmakerLogos = {
 	onexbet,
@@ -42,4 +43,5 @@ export const bookmakerLogos = {
 	unibet_se,
 	williamhill,
 	winamax_de,
+	fallback,
 }

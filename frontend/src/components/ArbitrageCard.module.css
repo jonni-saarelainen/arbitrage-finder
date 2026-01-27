@@ -1,0 +1,89 @@
+.card {
+	display: grid;
+	grid-template-columns: 25% 31% 44%;
+	width: 1200px;
+	min-height: 196px;
+	background-color: var(--color-bg-light);
+	border-radius: 12px;
+	box-shadow: 2px 2px 7px 0px var(--color-shadow-default);
+	padding: 2.4rem 2.4rem 2.4rem 6.4rem;
+}
+
+.vContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.6rem;
+}
+
+.roiContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.roiContainer b {
+	color: var(--color-green);
+}
+
+.roi {
+	position: relative;
+	display: inline-block;
+	color: var(--color-green);
+	z-index: 1;
+}
+
+.roi::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: var(--color-shadow-green);
+	filter: blur(32px);
+	z-index: -1;
+}
+
+.eventContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.bestOddsContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0.8rem;
+}
+
+.oddContainer {
+	display: grid;
+	align-items: center;
+	grid-template-columns: 41% 27% 32%;
+}
+
+.stakeContainer {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.bookmakerLinkButton {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width: 100%;
+	background-color: hsl(0, 0%, 0%, 0.02);
+	border: 2px solid var(--color-border-default);
+	border-radius: 8px;
+	padding: 0.4rem;
+}
+
+.bookmakerLinkButton h4 {
+	justify-self: center;
+	align-self: center;
+}
+
+.bookmakerLogo {
+	height: 3.2rem;
+	border-radius: 4px;
+}

@@ -6,12 +6,11 @@ export function useArbitrage() {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 
-	async function refresh(filters) {
+	async function refresh() {
 		try {
 			setLoading(true);
 			setError(null);
-
-			const result = await fetchArbitrageOpportunities(filters);
+			const result = await fetchArbitrageOpportunities();
 			setData(result);
 		} catch (err) {
 			setError(err);
