@@ -15,12 +15,12 @@ Built this as a learning-focused full-stack application and it is intended to ru
 ### Backend
 - Node.js
 - Express
-## 🔑 API Key Handling
+## API Key Handling
 ### The Odds API key is handled server-side using environment variables.
 - User provides their own API key to a .env file in the backend directory
 - The backend reads the API key from the .env file in order to use it for fetching odds data
 - For setting API key check .env.example file
-## 📸 Screenshots
+## Screenshots
 <img width="1905" height="1079" alt="image" src="https://github.com/user-attachments/assets/d4bf6e2c-9a2e-401e-ba30-6d7befcb0f71" />  
 
 ## Running the Project Locally
@@ -46,7 +46,7 @@ Start frontend with:
 npm run dev
 ```
 
-## 📌 Notes & Limitations
+## Notes
 - The app is designed for educational purposes and only for running locally
 - Performance depends on Odds API response times and is heavily rate limited
 - Only bookmakers with websites accessible in the Finnish region are included.
