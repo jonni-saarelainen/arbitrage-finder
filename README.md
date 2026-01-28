@@ -1,13 +1,13 @@
 # Arbie - Arbitrage Finder
 Full-stack web application project that finds sports betting arbitrage opportunities by fetching odds from multiple bookmakers using [Odds Api](https://the-odds-api.com/), calculating implied probabilities, and identifying profitable combinations.  
 Built this as a learning-focused full-stack application and it is intended to run locally in a development environment only.
-## 🚀 Whats The Idea?
+## Features
 - Fetches live sports odds from a third-party Odds Api
 - Calculates arbitrage opportunities on the backend
 - Displays ROI, implied probability, and optimal stake distribution
 - Clean, component-based React UI
 - Backend API built with Node.js and Express
-## 📦 Technologies
+## Technologies
 ### Frontend
 - React(Vite)
 - JavaScript (ES6+)
@@ -23,7 +23,7 @@ Built this as a learning-focused full-stack application and it is intended to ru
 ## 📸 Screenshots
 <img width="1905" height="1079" alt="image" src="https://github.com/user-attachments/assets/d4bf6e2c-9a2e-401e-ba30-6d7befcb0f71" />  
 
-## 🔧 Running the Project Locally
+## Running the Project Locally
 Clone the repo:
 ```
 git clone https://github.com/jonni-saarelainen/arbitrage-finder.git
