@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// These are the bookmakers that were working in Finland at the time of implementation
 const allowedBookmakers = [
 	"onexbet",
 	"sport888",
