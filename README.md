@@ -9,8 +9,8 @@ Built this as a learning-focused full-stack application and it is intended to ru
 - Backend API built with Node.js and Express
 ## Technologies
 ### Frontend
-- React(Vite)
-- JavaScript (ES6+)
+- React
+- JavaScript
 - CSS Modules
 ### Backend
 - Node.js
