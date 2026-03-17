@@ -5,7 +5,7 @@ Built this as a learning-focused full-stack application and it is intended to ru
 - Fetches live sports odds from a third-party Odds Api
 - Calculates arbitrage opportunities on the backend
 - Displays ROI, implied probability, and optimal stake distribution
-- Clean, component-based React UI
+- Component-based React UI
 - Backend API built with Node.js and Express
 ## Technologies
 ### Frontend
@@ -49,5 +49,3 @@ npm run dev
 ## Notes
 - The app is designed for educational purposes and only for running locally
 - Performance depends on Odds API response times and is heavily rate limited
-- Only bookmakers with websites accessible in the Finnish region are included.
-- Dates and currency are formatted according to Finnish conventions.
